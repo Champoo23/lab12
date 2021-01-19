@@ -4,6 +4,7 @@ using namespace std;
 
 void stat(const double[],int,double[]);
 
+
 int main(){
     double A[] = {1.2,3.5,6.9,7.8,12.5,0.5};
     int N = sizeof(A)/sizeof(A[0]);
@@ -16,4 +17,30 @@ int main(){
     cout << "\nMax = " << B[4];
     cout << "\nMin = " << B[5];
     return 0;
+}
+void stat (const double A[],int N,double B[])
+{
+    double avg =0,max=A[0],min =A[0],sum =0, SD,GM,Harmonicsum,multiplysum =1,harmonicsum;
+    for(int i=0; i<N; i++)
+    
+    {
+    harmonicsum += 1.0/A[i];
+    multiplysum *= A[i];
+    avg += A[i];
+    if(A[i] > max) max = A[i];
+    if(A[i] < min) min = A[i];
+    sum += pow(A[i],2);
+    }
+
+avg /= N;
+Harmonicsum = N/harmonicsum;
+SD = sqrt(sum/N-pow(avg,2));
+
+GM = pow(multiplysum,1.0/N);
+B[0] = avg;
+B[1] = SD;
+B[2] = GM;
+B[3] = Harmonicsum;
+B[4] = max;
+B[5] = min;
 }
